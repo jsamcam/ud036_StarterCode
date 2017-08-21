@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .equal {
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container equal">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="nMft5QDOHek" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/2qAgGeYdLjelOEqjW9FYvPHpplC.jpg" width="220" height="342">
+    <h2>Braveheart</h2>
+    <div width="220" height="120">Enraged at the slaughter of Murron, his new bride and childhood love, Scottish warrior William Wallace slays a platoon of the local English lord's soldiers. This leads the village to revolt and, eventually, the entire country to rise up against English rule.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="gPkMx_pfJ5w" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/16w7CEUYcAndL2YaJpDe1CbNBrB.jpg" width="220" height="342">
+    <h2>El laberinto del fauno</h2>
+    <div width="220" height="120">Living with her tyrannical stepfather in a new home with her pregnant mother, 10-year-old Ofelia feels alone until she explores a decaying labyrinth guarded by a mysterious faun who claims to know her destiny. If she wishes to return to her real father, Ofelia must complete three terrifying tasks.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Y07I_KER5fE" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/zeCD9WkhABFJmPq3SlTozXJGEtr.jpg" width="220" height="342">
+    <h2>Starship Troopers</h2>
+    <div width="220" height="120">Set in the future, the story follows a young soldier named Johnny Rico and his exploits in the Mobile Infantry. Rico's military career progresses from recruit to non-commissioned officer and finally to officer against the backdrop of an interstellar war between mankind and an arachnoid species known as "the Bugs".</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="rW2bWAcsPCk" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/pwpGfTImTGifEGgLb3s6LRPd4I6.jpg" width="220" height="342">
+    <h2>GoodFellas</h2>
+    <div width="220" height="120">The true story of Henry Hill, a half-Irish, half-Sicilian Brooklyn kid who is adopted by neighbourhood gangsters at an early age and climbs the ranks of a Mafia family under the guidance of Jimmy Conway.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5MB3Ea6L-gw" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/8Ic8rRVoVrDJJlXzVzGxAesufUV.jpg" width="220" height="342">
+    <h2>Avatar</h2>
+    <div width="220" height="120">In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="dtwpjnuaVTE" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/mUoiurmzzUvvR5ES6BjvuFm1IW7.jpg" width="220" height="342">
+    <h2>Ready Player One</h2>
+    <div width="220" height="120">When the creator of a popular video game system dies, a virtual contest is created to compete for his billions.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="L9szn1QQfas" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/vllvystwQjmXzy5OvBKnGl1JREF.jpg" width="220" height="342">
+    <h2>TRON: Legacy</h2>
+    <div width="220" height="120">Sam Flynn, the tech-savvy and daring son of Kevin Flynn, investigates his father's disappearance and is pulled into The Grid. With the help of a mysterious program named Quorra, Sam quests to stop evil dictator Clu from crossing into the real world.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="s7EdQ4FqbhY" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/dM2w364MScsjFf8pfMbaWUcWrR.jpg" width="220" height="342">
+    <h2>Pulp Fiction</h2>
+    <div width="220" height="120">A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="V75dMMIW2B4" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" width="220" height="342">
+    <h2>The Lord of the Rings: The Fellowship of the Ring</h2>
+    <div width="220" height="120">Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="qnwNuG1ayno" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/6o0UWX2naW7HK45PDNYmoMIk5qs.jpg" width="220" height="342">
+    <h2>No Country for Old Men</h2>
+    <div width="220" height="120">Llewelyn Moss stumbles upon dead bodies, $2 million and a hoard of heroin in a Texas desert, but methodical killer Anton Chigurh comes looking for it, with local sheriff Ed Tom Bell hot on his trail. The roles of prey and predator blur as the violent pursuit of money and justice collide.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="g4kLizDXLY0" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/qAbRLPe8T7ehKzr1Tgo78T7ASrS.jpg" width="220" height="342">
+    <h2>Man on Fire</h2>
+    <div width="220" height="120">Jaded ex-CIA operative John Creasy reluctantly accepts a job as the bodyguard for a 10-year-old girl in Mexico City. They clash at first, but eventually bond, and when she's kidnapped he's consumed by fury and will stop at nothing to save her life.</div>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="uU-ET1FAv3Y" data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/lryNn7sNkvQIg45KwgeKnMxSSRX.jpg" width="220" height="342">
+    <h2>Harry Potter and the Chamber of Secrets</h2>
+    <div width="220" height="120">Ignoring threats to his life, Harry returns to Hogwarts to investigate ? aided by Ron and Hermione ? a mysterious series of attacks.</div>
+</div>
+
+    </div>
+  </body>
+</html>
